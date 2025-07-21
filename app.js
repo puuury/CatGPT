@@ -19,6 +19,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initial state
     sendButton.disabled = true;
+
+    // Modal logic
+    const helpIcon = document.getElementById('helpIcon');
+    const aboutModal = document.getElementById('aboutModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalBody = aboutModal.querySelector('.modal-body');
+    let modalOpen = false;
+    // Persian README text
+    const persianReadme = `کت‌جی‌پی‌تی یک چت‌بات بامزه است که فقط با "میوو" جواب می‌دهد! هرچی بنویسی، فقط با مدل‌های مختلفی از "میوو" (به تعداد کلمات پیام خودت!) جواب می‌گیری. این پروژه برای سرگرمی و حمایت از گربه‌های خیابانی ساخته شده و در آینده امکانات بیشتری بهش اضافه می‌کنیم تا واقعا به گربه‌ها کمک کنیم.<br><br>امکانات:<br>• رابط کاربری ساده و دوست‌داشتنی<br>• آواتار گربه و انیمیشن تایپ کردن<br>• هر پیامی فقط با "میوو" جواب داده میشه!<br><br>چطور اجرا کنم؟<br>۱. این مخزن رو دانلود یا کلون کن.<br>۲. فایل index.html رو با مرورگر باز کن. همین!<br><br>دوست داری کمک کنی؟<br>خوشحال می‌شیم اگر پروژه رو فورک کنی، ایده بدی یا حتی فقط سلام کنی! هر پیشنهادی برای بهتر شدن یا کمک واقعی به گربه‌ها رو با آغوش باز می‌پذیریم.<br><br><span style='font-size:1.2em;'>ساخته شده با ❤️ برای همه گربه‌های خیابانی!</span>`;
+    function openModal() {
+        modalBody.innerHTML = persianReadme;
+        aboutModal.style.display = 'flex';
+        setTimeout(() => { aboutModal.style.opacity = 1; }, 10);
+        helpIcon.innerHTML = '<span>❌</span>';
+        helpIcon.setAttribute('title', 'بستن');
+        modalOpen = true;
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModalFunc() {
+        aboutModal.style.animation = 'modalFadeOut 0.3s';
+        aboutModal.style.opacity = 0;
+        setTimeout(() => {
+            aboutModal.style.display = 'none';
+            aboutModal.style.animation = '';
+        }, 300);
+        helpIcon.innerHTML = '<span>ℹ️</span>';
+        helpIcon.setAttribute('title', 'درباره پروژه');
+        modalOpen = false;
+        document.body.style.overflow = '';
+    }
+    helpIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!modalOpen) openModal();
+        else closeModalFunc();
+    });
+    closeModal.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeModalFunc();
+    });
+    aboutModal.addEventListener('click', function(e) {
+        if (e.target === aboutModal) closeModalFunc();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (modalOpen && (e.key === 'Escape' || e.key === 'Esc')) closeModalFunc();
+    });
 });
 
 // Handle Enter key press
