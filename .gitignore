@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Env
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Build
+/dist/
+/build/
+
+# VSCode
+.vscode/
+
+# Others
+*.swp
+*.swo
+.idea/
+*.bak 

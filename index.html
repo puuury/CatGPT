@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEWO Chat - هوش مصنوعی گربه</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>🐱 CatGPT</h1>
+      <!-- <p>هوش مصنوعی گربه که فقط MEWO می‌گوید!</p> -->
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot-message">
+        <div class="message-content">
+          <div class="avatar">🐱</div>
+          <div class="text">سلام! من MEWO هستم. هر سوالی داری بپرس! 😺</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="chat-input-container">
+      <div class="input-wrapper">
+        <textarea 
+          id="userInput" 
+          placeholder="پیام خود را بنویسید..." 
+          rows="1"
+          onkeydown="handleKeyDown(event)"
+        ></textarea>
+        <button id="sendButton" onclick="sendMessage()">
+          <span>📤</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
